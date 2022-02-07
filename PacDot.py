@@ -1,7 +1,11 @@
-from Static_Entities import Static_Entitie
+from EatableEntity import EatableEntity
 
-class PacDot(Static_Entitie): 
+class PacDot(EatableEntity): 
     pass
+
+
+
+
 
     
     

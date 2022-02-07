@@ -1,4 +1,4 @@
-from Static_Entities import Static_Entitie
+from EatableEntity import EatableEntity
 
-class Fruit(Static_Entitie):
+class Fruit(EatableEntity):
     pass

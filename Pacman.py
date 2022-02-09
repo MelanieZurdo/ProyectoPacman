@@ -1,22 +1,2 @@
 class Pacman():
-    pass        
-        
-
-
-
-        
-
-
-    
-
-
-    
-       
-
-
-
-
-
-    
-    
-    
+    pass

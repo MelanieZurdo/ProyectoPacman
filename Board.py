@@ -1,90 +1,33 @@
-from Nivel import Nivel
-from Pacman import Pacman
+from numpy import character
+from Square import Square
 from Position import Position
+from Pacman import Pacman
 
-class Board(Nivel):#Si bien me funciona, no me convence a nivel teorico, un tablero es un nivel?
-    def __init__(self,rows,columns):
-        super().__init__(rows,columns)
-        self.board=self.create_board()
-        
-    
-    
+
+class Board():
+    def __init__(self, rows, columns, square):
+        self.rows = rows
+        self.columns = columns
+        self.square = square
+        self.create_board()
+
+    def get_rows(self):
+        return self.rows
+
+    def get_columns(self):
+        return self.columns
+
     def create_board(self):
-        board=[]
-        for i in range(self.rows):
-            board.append([])   
-            print()                
-            for j in range(self.columns):                
-                board[i].append(None)                       
-        return board
+        self.board = []
+        for i in range(self.get_rows()):
+            self.board.append([])
+            for j in range(self.get_columns()):
+                self.board[i].append(self.square)
+        return self.board
 
-    
-    def place_character(self,*args):
-        for i,value in enumerate(args):
-            if i==0:
-                character=value
-            elif i==1:
-                x,y=value
-                self.board[x][y]=character
-        
+    def place_entity(self, entity, position):
+        self.board[position.get_row()][position.get_column()] = entity
+        return self.board
 
-
-pacman=Pacman
-pacman_place=Position(1,2)
-tablero=Board(5,5)
-tablero.place_character(pacman,pacman_place.position)
-print(tablero.board)
-        
-        
-       
-        
-        
-        
-        
-
-
-
-
-
-
-
-
-      
-    
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-    
-        
-
-
-
-    
-    
-        
-    
-    
-        
-        
-
-    
-
-            
-    
-        
-
-
-
-
+    def __str__(self):
+        return f"{self.create_board()}"

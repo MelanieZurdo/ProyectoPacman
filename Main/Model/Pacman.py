@@ -3,4 +3,4 @@ class Pacman():
         self.forma="@"
         
     def __str__(self):
-     return  f"["+str(self.forma)+"]"
+     return  "["+str(self.forma)+"]"

@@ -1,7 +1,4 @@
-from Square import Square
-from Position import Position
-from Pacman import Pacman
-
+from .Square import Square
 
 class Board():
     def __init__(self, rows, columns):

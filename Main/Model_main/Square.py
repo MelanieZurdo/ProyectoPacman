@@ -11,8 +11,8 @@ class Square:
         self.entity = entity
         return self.entity
     
-    def delete(self):
-        self.entity = None
+    
+    
         
     def is_empty(self):
         return self.entity == None

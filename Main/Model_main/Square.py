@@ -10,7 +10,10 @@ class Square:
     def put(self, entity):
         self.entity = entity
         return self.entity
+
     
+    def delete(self):
+        self.entity = None 
     
     
         

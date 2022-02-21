@@ -1,6 +1,7 @@
 from Square import Square
 from Position import Position
 from Pacman import Pacman
+from PacDot import PacDot
 
 
 class Board():
@@ -28,10 +29,22 @@ class Board():
 
     def get_entity(self, position):
         square = self.board[position.get_row()][position.get_column()]
-        return square.__str__()
+        return square.entity 
+
+    def clean_entity(self,position):
+        square = self.board[position.get_row()][position.get_column()]
+        return square.delete()       
+        
 
     def __str__(self):
         return '\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.board])
+    
+
+
+
+
+
+
 
 
 

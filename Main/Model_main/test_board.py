@@ -23,9 +23,19 @@ class TestBoard(unittest.TestCase):
     def test_insert_entity(self):
         board = Board(2,2)
         pacman = Pacman()
-        pacman_position = Position(1, 1)
+        pacman_position = Position(1, 1)       
         board.place_entity(pacman_position, pacman)
-        self.assertEqual(pacman.__str__(),board.get_entity(pacman_position))
+        self.assertEqual(pacman,board.get_entity(pacman_position))
+    
+    def test_move_pacman(self):
+        board = Board(2,2)
+        pacman = Pacman()
+        pacman_position = Position(1, 1)       
+        board.place_entity(pacman_position, pacman)
+        board.place_entity((pacman.move(Position(0,0))),(board.get_entity(pacman_position)))
+        board.clean_entity(pacman_position)
+        self.assertEqual(pacman,board.get_entity((pacman.move(Position(0,0)))))
+        self.assertNotEqual(pacman,board.get_entity(pacman_position))
 
 
 if __name__ == '__main__':

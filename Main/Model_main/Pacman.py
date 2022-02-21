@@ -1,6 +1,10 @@
 class Pacman():
     def __init__(self):
-        self.forma="@"
+        self.shape="@"
+    
+    def move(self,position):
+        self.position=position
+        return self.position
         
     def __str__(self):
-     return  f"["+str(self.forma)+"]"
+     return  "["+str(self.shape)+"]"

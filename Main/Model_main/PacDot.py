@@ -1,5 +1,7 @@
-from Main.Model_main.EatableEntity import EatableEntity
-
+from EatableEntity import EatableEntity
 
 class PacDot(EatableEntity):
-    pass
+    def __init__(self):
+        self.shape="*"
+    def __str__(self):
+        return "["+str(self.shape)+"]"

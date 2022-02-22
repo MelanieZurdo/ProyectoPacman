@@ -1,8 +1,3 @@
-
-
-from numpy import delete
-
-
 class Square:
     def __init__(self):
         self.entity = None
@@ -14,8 +9,7 @@ class Square:
     
     def delete(self):
         self.entity = None 
-    
-    
+       
         
     def is_empty(self):
         return self.entity == None

@@ -1,6 +1,8 @@
 class Square:
     def __init__(self):
         self.entity = None
+    
+    
 
     def put(self, entity):
         self.entity = entity

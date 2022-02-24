@@ -1,4 +1,4 @@
-from Main.Model_main.EatableEntity import EatableEntity
+from .EatableEntity import EatableEntity
 
 
 #TODO: Maybe is better to have a children class for each fruit

@@ -1,4 +1,4 @@
-from Main.Model_main.DynamicEntity import DynamicEntity
+from .DynamicEntity import DynamicEntity
 
 
 class Ghost(DynamicEntity):

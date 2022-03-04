@@ -1,4 +1,4 @@
-from .DynamicEntity import DynamicEntity
+from DynamicEntity import DynamicEntity
 
 
 class Ghost(DynamicEntity):

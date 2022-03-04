@@ -1,7 +1,7 @@
-from .EatableEntity import EatableEntity
+from EatableEntity import EatableEntity
 
 
-#TODO: Maybe is better to have a children class for each fruit
+# TODO: Maybe is better to have a children class for each fruit
 class Fruit(EatableEntity):
-    def __init__(self, type):
-        self.type = type
+    def __init__(self):
+        pass

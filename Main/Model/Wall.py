@@ -1,4 +1,4 @@
-from .StaticEntity import StaticEntity
+from StaticEntity import StaticEntity
 
 
 class Wall(StaticEntity):

@@ -8,3 +8,16 @@ class Position:
 
     def get_column(self):
         return self.column
+    
+    def decrease_row(self):
+        return self.row-1
+
+    def increase_row(self):
+        return self.row+1
+    
+    def decrease_column(self):
+        return self.column-1
+
+    def increase_column(self):
+        return self.column+1
+

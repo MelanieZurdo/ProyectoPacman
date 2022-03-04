@@ -1,7 +1,5 @@
-
 from Square import Square
 from Position import Position
-from Pacman import Pacman
 
 
 class Board():
@@ -27,19 +25,22 @@ class Board():
         square = self.board[position.get_row()][position.get_column()]
         square.put(entity)
 
+    def get_position(self, entity):
+        for i in range(self.get_rows()):
+            for j in range(self.get_columns()):
+                if self.board[i][j].get_entity() == entity:
+                    return Position(i, j)
+
     def get_entity(self, position):
         square = self.board[position.get_row()][position.get_column()]
-        return square.entity
-    
-    def get_square(self,position):
-        square = self.board[position.get_row()][position.get_column()]
-        return square
+        return square.get_entity()
 
-
-    def clean_entity(self, position):
+    def clear_entity(self, position):
         square = self.board[position.get_row()][position.get_column()]
         return square.delete()
 
+    def fill_board(self):
+        pass
+
     def __str__(self):
         return '\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.board])
-

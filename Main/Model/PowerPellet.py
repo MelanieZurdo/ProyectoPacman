@@ -1,4 +1,4 @@
-from .EatableEntity import EatableEntity
+from EatableEntity import EatableEntity
 
 
 class PowerPellet(EatableEntity):

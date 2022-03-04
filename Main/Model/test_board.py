@@ -1,8 +1,9 @@
 import unittest
 from Board import Board
-from Main.Model.PacDot import PacDot
+from Directions import Direction
 from Position import Position
 from Pacman import Pacman
+from Wall import Wall
 
 
 class TestBoard(unittest.TestCase):
@@ -24,7 +25,7 @@ class TestBoard(unittest.TestCase):
     def test_insert_entity(self):
         board = Board(2, 2)
         pacman = Pacman()
-        pacman_position = Position(1, 1)
+        pacman_position = Position(0, 0)
         board.place_entity(pacman_position, pacman)
         self.assertEqual(pacman, board.get_entity(pacman_position))
 
@@ -32,23 +33,9 @@ class TestBoard(unittest.TestCase):
         board = Board(2, 2)
         pacman = Pacman()
         pacman_position = Position(1, 1)
-        board.place_entity(pacman_position, pacman)
-        board.place_entity((pacman.move(Position(0, 0))), (board.get_entity(pacman_position)))
-        board.clean_entity(pacman_position)
-        self.assertEqual(pacman, board.get_entity(
-        (pacman.move(Position(0, 0)))))
-        self.assertNotEqual(pacman, board.get_entity(pacman_position))
-
-    def test_set_complete_board(self):
-        board=Board(2,2)
-        pacman=Pacman()
-        pacman_position = Position(0,0)
-        for i,j in enumerate(board):
-            if board[i][j].is_empty():
-                board[i][j].put(PacDot())
-            
-
-
+        board.place_entity(pacman_position, pacman)        
+        pacman.move(board, Direction.DOWN)
+        self.assertEqual(pacman, board.get_entity(Position(0,1)))
 
 
 if __name__ == '__main__':

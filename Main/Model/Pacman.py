@@ -1,6 +1,6 @@
-from Directions import Direction
-from Position import Position
-from Board import Board
+from .Directions import Direction
+from .Position import Position
+from .Board import Board
 
 
 class Pacman():

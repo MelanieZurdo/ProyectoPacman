@@ -1,8 +1,8 @@
 import unittest
-from Board import Board
-from Directions import Direction
-from Position import Position
-from Pacman import Pacman
+from Main.Model.Board import Board
+from Main.Model.Directions import Direction
+from Main.Model.Position import Position
+from Main.Model.Pacman import Pacman
 
 
 

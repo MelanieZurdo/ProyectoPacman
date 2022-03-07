@@ -1,5 +1,5 @@
-from Square import Square
-from Position import Position
+from .Square import Square
+from .Position import Position
 
 
 class Board():

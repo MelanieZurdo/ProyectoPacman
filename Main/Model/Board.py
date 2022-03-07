@@ -39,6 +39,38 @@ class Board():
         square = self.board[position.get_row()][position.get_column()]
         return square.delete()
 
+    def limit_cases_up(self):
+        limit_cases_up = list()
+        for i in range(self.get_rows()):
+            for j in range(self.get_columns()):
+                if i == 0:
+                    limit_cases_up.append((i, j))
+        return limit_cases_up
+
+    def limit_cases_down(self):
+        limit_cases_down = list()
+        for i in range(self.get_rows()):
+            for j in range(self.get_columns()):
+                if i == self.get_rows()-1:
+                    limit_cases_down.append((i, j))
+        return limit_cases_down
+
+    def limit_cases_right(self):
+        limit_cases_right = list()
+        for i in range(self.get_rows()):
+            for j in range(self.get_columns()):
+                if j == self.get_columns()-1:
+                    limit_cases_right.append((i, j))
+        return limit_cases_right
+
+    def limit_cases_left(self):
+        limit_cases_left = list()
+        for i in range(self.get_rows()):
+            for j in range(self.get_columns()):
+                if j == 0:
+                    limit_cases_left.append((i, j))
+        return limit_cases_left
+
     def fill_board(self):
         pass
 

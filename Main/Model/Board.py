@@ -1,5 +1,7 @@
 from .Square import Square
 from .Position import Position
+from .Direction import Direction
+
 
 
 class Board():
@@ -39,40 +41,18 @@ class Board():
         square = self.board[position.get_row()][position.get_column()]
         return square.delete()
 
-    def limit_cases_up(self):
-        limit_cases_up = list()
-        for i in range(self.get_rows()):
-            for j in range(self.get_columns()):
-                if i == 0:
-                    limit_cases_up.append((i, j))
-        return limit_cases_up
+    def move_entity(self,entity,direction):
+        position_entity=self.get_position(entity)
+        position_entity_up=direction.validate_position(position_entity)
+        self.clear_entity(position_entity)
+        self.place_entity(position_entity_up,entity)
 
-    def limit_cases_down(self):
-        limit_cases_down = list()
-        for i in range(self.get_rows()):
-            for j in range(self.get_columns()):
-                if i == self.get_rows()-1:
-                    limit_cases_down.append((i, j))
-        return limit_cases_down
 
-    def limit_cases_right(self):
-        limit_cases_right = list()
-        for i in range(self.get_rows()):
-            for j in range(self.get_columns()):
-                if j == self.get_columns()-1:
-                    limit_cases_right.append((i, j))
-        return limit_cases_right
-
-    def limit_cases_left(self):
-        limit_cases_left = list()
-        for i in range(self.get_rows()):
-            for j in range(self.get_columns()):
-                if j == 0:
-                    limit_cases_left.append((i, j))
-        return limit_cases_left
 
     def fill_board(self):
         pass
 
     def __str__(self):
         return '\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.board])
+
+

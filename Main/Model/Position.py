@@ -10,14 +10,14 @@ class Position:
         return self.column
     
     def decrease_row(self):
-        return self.row-1
+        return Position(self.get_row()-1,self.get_column())
 
     def increase_row(self):
-        return self.row+1
+        return Position(self.get_row()+1,self.get_column())
     
     def decrease_column(self):
-        return self.column-1
+        return Position(self.get_row(),self.get_column-1)
 
     def increase_column(self):
-        return self.column+1
+        return Position(self.get_row(),self.get_column+1)
 

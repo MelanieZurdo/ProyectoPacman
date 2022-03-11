@@ -1,10 +1,13 @@
 import unittest
 from Main.Model.Board import Board
 from Main.Model.Direction import Direction
-from Main.Model.Direction_up import Direction_Up
 from Main.Model.Position import Position
 from Main.Model.Pacman import Pacman
 from Main.Model.Square import Square
+from Main.Model.Up import Up
+from Main.Model.Down import Down
+from Main.Model.Right import Right
+from Main.Model.Left import Left
 
 
 
@@ -31,23 +34,50 @@ class TestBoard(unittest.TestCase):
         board.place_entity(pacman_position, pacman)
         self.assertEqual(pacman, board.get_entity(pacman_position))
 
-    def test_move_pacman_UP(self):
+    def test_move_pacman_up(self):
         board=Board(5,5)
         pacman=Pacman()
         pacman_position=Position(1,0)
         board.place_entity(pacman_position,pacman)      
-        UP=Direction_Up()
-        board.move_entity(pacman,UP)        
+        up=Up()
+        board.move_entity(pacman,up)        
         self.assertEqual(pacman, board.get_entity(Position(0,0)))
+        self.assertEqual(None,board.get_entity(pacman_position))
     
-    def test_pacman_really_move(self):
+    def test_move_pacman_down(self):
         board=Board(5,5)
         pacman=Pacman()
-        pacman_position=Position(1,0)
+        pacman_position=Position(3,0)
         board.place_entity(pacman_position,pacman)      
-        UP=Direction_Up()
-        board.move_entity(pacman,UP)        
+        down=Down()
+        board.move_entity(pacman,down)        
+        self.assertEqual(pacman, board.get_entity(Position(4,0)))
         self.assertEqual(None,board.get_entity(pacman_position))
+
+    def test_move_pacman_rigt(self):
+        board=Board(5,5)
+        pacman=Pacman()
+        pacman_position=Position(0,3)
+        board.place_entity(pacman_position,pacman)      
+        right=Right()
+        board.move_entity(pacman,right)        
+        self.assertEqual(pacman, board.get_entity(Position(0,4)))
+        self.assertEqual(None,board.get_entity(pacman_position))
+
+    def test_move_pacman_left(self):
+        board=Board(5,5)
+        pacman=Pacman()
+        pacman_position=Position(0,1)
+        board.place_entity(pacman_position,pacman)      
+        left=Left()
+        board.move_entity(pacman,left)        
+        self.assertEqual(pacman, board.get_entity(Position(0,0)))
+        self.assertEqual(None,board.get_entity(pacman_position))
+
+    
+    
+          
+        
     
 
         

@@ -1,5 +1,4 @@
-from .DynamicEntity import DynamicEntity
-class Pacman(DynamicEntity):
+class Pacman():
 
     def __str__(self):
         return "[@]"

@@ -38,8 +38,8 @@ class TestBoard(unittest.TestCase):
         board=Board(5,5)
         pacman=Pacman()
         pacman_position=Position(1,0)
-        board.place_entity(pacman_position,pacman)      
-        up=Up()
+        board.place_entity(pacman_position,pacman)  
+        up=Up() 
         board.move_entity(pacman,up)        
         self.assertEqual(pacman, board.get_entity(Position(0,0)))
         self.assertEqual(None,board.get_entity(pacman_position))
@@ -73,16 +73,7 @@ class TestBoard(unittest.TestCase):
         board.move_entity(pacman,left)        
         self.assertEqual(pacman, board.get_entity(Position(0,0)))
         self.assertEqual(None,board.get_entity(pacman_position))
-
-    
-    
-          
         
     
-
-        
-
-
-
 if __name__ == '__main__':
     unittest.main()

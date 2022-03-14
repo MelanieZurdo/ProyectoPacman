@@ -1,6 +1,7 @@
 from .Square import Square
 from .Position import Position
 from .Direction import Direction
+from .Up import Up
 
 
 class Board():
@@ -15,17 +16,11 @@ class Board():
     def get_columns(self):
         return self.columns
 
-    def limit_case_up(self):
-        return self.get_rows()-self.get_rows()
-
-    def limit_case_down(self):
-        return self.get_rows()-1
-
-    def limit_case_right(self):
-        return self.get_columns()-1
-
-    def limit_case_left(self):
-        return self.get_columns()-self.get_columns()
+    def in_board(self,position):
+        if position.get_row() in range(0,5) and position.get_column() in range(0,5):
+            return True
+        else:
+            return False     
 
     def create_board(self):
         self.board = list()
@@ -54,13 +49,13 @@ class Board():
 
     def move_entity(self, entity, direction):
         position_entity = self.get_position(entity)
-        check_position = direction.validate_position(position_entity,self)
-        if check_position is False:
-            pass
-        else:
-            new_position = direction.new_position(position_entity)
+        new_position = direction.new_position(position_entity)
+        check_position=self.in_board(new_position)
+        if check_position:
             self.clear_entity(position_entity)
-            self.place_entity(new_position, entity)
+            self.place_entity(new_position,entity)
+
+        
 
     def fill_board(self):
         pass

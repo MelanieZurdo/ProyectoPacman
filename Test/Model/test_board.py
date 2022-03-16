@@ -35,12 +35,14 @@ class TestBoard(unittest.TestCase):
     def test_move_pacman_up(self):
         board=Board(5,5)
         pacman=Pacman()
-        pacman_position=Position(2,0)
-        board.place_entity(pacman_position,pacman)
+        pacman_position=Position(2,1)
         board.fill_board()  
-        board.move_entity(pacman,Direction.up())        
-        self.assertEqual(pacman, board.get_entity(Position(1,0)))
+        board.place_entity(pacman_position,pacman)
+        board.move_entity(pacman,Direction.up()) 
+        self.assertEqual(pacman, board.get_entity(Position(1,1)))
         self.assertEqual(None,board.get_entity(pacman_position))
+        board.move_entity(pacman,Direction.up())  
+        self.assertEqual(pacman, board.get_entity(Position(1,1)))
     
 ''' def test_move_pacman_down(self):
         board=Board(5,5)

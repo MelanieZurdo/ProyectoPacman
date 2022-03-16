@@ -1,7 +1,9 @@
+from .PacDot import PacDot
 from .Square import Square
 from .Position import Position
+from .Wall import Wall
 from .Direction import Direction
-from .Up import Up
+
 
 
 class Board():
@@ -16,11 +18,8 @@ class Board():
     def get_columns(self):
         return self.columns
 
-    def in_board(self,position):
-        if position.get_row() in range(0,5) and position.get_column() in range(0,5):
-            return True
-        else:
-            return False     
+    def in_board(self, position):
+        return position.get_row() in range(0, self.get_rows()) and position.get_column() in range(0, self.get_columns())
 
     def create_board(self):
         self.board = list()
@@ -50,15 +49,30 @@ class Board():
     def move_entity(self, entity, direction):
         position_entity = self.get_position(entity)
         new_position = direction.new_position(position_entity)
-        check_position=self.in_board(new_position)
-        if check_position:
+        if self.in_board(new_position) and self.is_not_wall(new_position) is not True:
             self.clear_entity(position_entity)
-            self.place_entity(new_position,entity)
+            self.place_entity(new_position, entity)
 
-        
+    def append_wall(self):
+        for i in range(self.get_rows()):
+            for j in range(self.get_columns()):
+                if i == 0 or j == 0 or i == self.get_rows()-1 or j == self.get_columns()-1:
+                    self.board[i][j].put(Wall())
+
+    def is_not_wall(self,position):
+       row=position.get_row()
+       column=position.get_column()
+       return row== 0 or column == 0 or row == self.get_rows()-1 or column == self.get_columns()-1
+            
+    def append_pacdot(self):
+        for i in range(self.get_rows()):
+            for j in range(self.get_columns()):
+                if self.board[i][j].is_empty():
+                    self.board[i][j].put(PacDot())
 
     def fill_board(self):
-        pass
+        self.append_wall()
+        self.append_pacdot()
 
     def __str__(self):
         return '\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.board])

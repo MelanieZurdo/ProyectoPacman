@@ -1,4 +1,4 @@
-from EatableEntity import EatableEntity
+from .EatableEntity import EatableEntity
 
 
 class PacDot(EatableEntity):
@@ -6,6 +6,5 @@ class PacDot(EatableEntity):
         pass  
 
     
-
     def __str__(self):
-        return "[*]"
+        return "[·]"

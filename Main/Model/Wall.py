@@ -1,5 +1,8 @@
-from StaticEntity import StaticEntity
+from .StaticEntity import StaticEntity
 
 
 class Wall(StaticEntity):
-    pass
+  
+
+     def __str__(self):
+        return "[-]"

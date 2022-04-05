@@ -75,4 +75,4 @@ class Board():
         self.append_pacdot()
 
     def __str__(self):
-        return '\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.board])
+        return '\n'+'\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.board])+'\n'

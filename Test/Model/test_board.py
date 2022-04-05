@@ -1,4 +1,8 @@
 import unittest
+import time
+import curses
+
+
 from Main.Model.Direction import Direction
 from Main.Model.Board import Board
 from Main.Model.Direction import Up
@@ -43,14 +47,18 @@ class TestBoard(unittest.TestCase):
     '''def test_move_pacman_up(self):
         board=Board(5,5)
         pacman=Pacman()
-        pacman_position=Position(2,0)
+        pacman_position=Position(2,1)
+        stdscr = curses.initscr()
+        board.fill_board()
+        print_start(stdscr,board)  
         board.place_entity(pacman_position,pacman)
-        board.fill_board()  
-        board.move_entity(pacman,Direction.up())        
-        self.assertEqual(pacman, board.get_entity(Position(1,0)))
-        self.assertEqual(None,board.get_entity(pacman_position))
+        print_start(stdscr,board) 
+        board.move_entity(pacman,Direction.up()) 
+        print_start(stdscr,board) 
+        self.assertEqual(pacman, board.get_entity(Position(1,1)))
+        self.assertEqual(None,board.get_entity(pacman_position))'''
     
-def test_move_pacman_down(self):
+    def test_move_pacman_down(self):
         board=Board(5,5)
         pacman=Pacman()
         pacman_position=Position(2,0)
@@ -85,7 +93,7 @@ def test_move_pacman_down(self):
         pacman_position=Position(0,1)
         board.place_entity(pacman_position,pacman) 
         board.fill_board()
-        board.move_entity(pacman,Direction.up())'''
+        board.move_entity(pacman,Direction.up())
 
         
     

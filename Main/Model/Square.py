@@ -16,6 +16,6 @@ class Square:
 
     def __str__(self):
         if self.is_empty():
-            return "[]"
+            return "[ ]"
         else:
             return str(self.entity)

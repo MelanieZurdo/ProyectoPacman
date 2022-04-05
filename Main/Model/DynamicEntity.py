@@ -1,7 +1,6 @@
-from abc import ABC, abstractmethod
-
+from abc import ABC,abstractmethod
 
 class DynamicEntity(ABC):
     @abstractmethod
-    def move():
+    def move(self):
         pass

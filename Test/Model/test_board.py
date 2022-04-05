@@ -1,8 +1,15 @@
 import unittest
+import time
+import curses
+
+
+from Main.Model.Direction import Direction
 from Main.Model.Board import Board
-from Main.Model.Directions import Direction
+from Main.Model.Direction import Up
 from Main.Model.Position import Position
 from Main.Model.Pacman import Pacman
+from Main.Model.Square import Square
+
 
 
 
@@ -29,70 +36,66 @@ class TestBoard(unittest.TestCase):
         board.place_entity(pacman_position, pacman)
         self.assertEqual(pacman, board.get_entity(pacman_position))
 
-    def test_move_pacman_UP(self):
-        board = Board(5, 5)
-        pacman = Pacman()
-        pacman_position = Position(1, 1)
-        board.place_entity(pacman_position, pacman)
-        pacman.move(board, Direction.UP)
-        self.assertEqual(pacman, board.get_entity(Position(0, 1)))
-
-    def test_move_pacman_DOWN(self):
-        board = Board(5, 5)
-        pacman = Pacman()
-        pacman_position = Position(1, 1)
-        board.place_entity(pacman_position, pacman)
-        pacman.move(board, Direction.DOWN)
-        self.assertEqual(pacman, board.get_entity(Position(2, 1)))
-
-    def test_move_pacman_RIGHT(self):
-        board = Board(5, 5)
-        pacman = Pacman()
-        pacman_position = Position(1, 1)
-        board.place_entity(pacman_position, pacman)
-        pacman.move(board, Direction.RIGHT)
-        self.assertEqual(pacman, board.get_entity(Position(1, 2)))
-
-    def test_move_pacman_LEFT(self):
-        board = Board(5, 5)
-        pacman = Pacman()
-        pacman_position = Position(1, 1)
-        board.place_entity(pacman_position, pacman)
-        pacman.move(board, Direction.LEFT)
-        self.assertEqual(pacman, board.get_entity(Position(1, 0)))
-
-    def test_move_pacman_up_limit_case(self):
-        board = Board(5, 5)
-        pacman = Pacman()
-        pacman_position = Position(0, 0)
-        board.place_entity(pacman_position, pacman)
-        pacman.move(board, Direction.UP)
-        self.assertEqual(pacman, board.get_entity(Position(0, 0)))
-
-    def test_move_pacman_down_limit_case(self):
-        board = Board(5, 5)
-        pacman = Pacman()
-        pacman_position = Position(4, 0)
-        board.place_entity(pacman_position, pacman)
-        pacman.move(board, Direction.DOWN)
-        self.assertEqual(pacman, board.get_entity(Position(4, 0)))
-
-    def test_move_pacman_right_limit_case(self):
-        board = Board(5, 5)
-        pacman = Pacman()
-        pacman_position = Position(0, 4)
-        board.place_entity(pacman_position, pacman)
-        pacman.move(board, Direction.RIGHT)
-        self.assertEqual(pacman, board.get_entity(Position(0, 4)))
-
-    def test_move_pacman_left_limit_case(self):
-        board = Board(5, 5)
-        pacman = Pacman()
-        pacman_position = Position(1, 0)
-        board.place_entity(pacman_position, pacman)
-        pacman.move(board, Direction.LEFT)
-        self.assertEqual(pacman, board.get_entity(Position(1, 0)))
+    def test_move_pacman_up(self):
+        board=Board(5,5)
+        pacman=Pacman()
+        pacman_position=Position(2,1)
+        stdscr = curses.initscr()
+        board.fill_board()
+        print_start(stdscr,board)  
+        board.place_entity(pacman_position,pacman)
+        print_start(stdscr,board) 
+        board.move_entity(pacman,Direction.up()) 
+        print_start(stdscr,board) 
+        self.assertEqual(pacman, board.get_entity(Position(1,1)))
+        self.assertEqual(None,board.get_entity(pacman_position))
+        board.move_entity(pacman,Direction.up())  
+        print_start(stdscr,board) 
+        self.assertEqual(pacman, board.get_entity(Position(1,1)))
 
 
+    def print_start(stdscr, object):
+        stdscr.addstr(0, 0, str(object))
+        stdscr.refresh()
+        time.sleep(1)
+''' def test_move_pacman_down(self):
+        board=Board(5,5)
+        pacman=Pacman()
+        pacman_position=Position(2,0)
+        board.place_entity(pacman_position,pacman)         
+        board.move_entity(pacman,Direction.down())        
+        self.assertEqual(pacman, board.get_entity(Position(3,0)))
+        self.assertEqual(None,board.get_entity(pacman_position))
+
+    def test_move_pacman_rigt(self):
+        board=Board(5,5)
+        pacman=Pacman()
+        pacman_position=Position(0,2)
+        board.place_entity(pacman_position,pacman)            
+        board.move_entity(pacman,Direction.right())        
+        self.assertEqual(pacman, board.get_entity(Position(0,3)))
+        self.assertEqual(None,board.get_entity(pacman_position))
+
+    def test_move_pacman_left(self):
+        board=Board(5,5)
+        pacman=Pacman()
+        pacman_position=Position(0,2)
+        board.place_entity(pacman_position,pacman)    
+        board.move_entity(pacman,Direction.left())        
+        self.assertEqual(pacman, board.get_entity(Position(0,1)))
+        self.assertEqual(None,board.get_entity(pacman_position))
+    
+    
+
+    def test_capture_eatable_entity(self):
+        board=Board(5,5)
+        pacman=Pacman()
+        pacman_position=Position(0,1)
+        board.place_entity(pacman_position,pacman) 
+        board.fill_board()
+        board.move_entity(pacman,Direction.up())'''
+
+        
+    
 if __name__ == '__main__':
     unittest.main()

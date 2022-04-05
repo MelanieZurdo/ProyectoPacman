@@ -1,6 +1,6 @@
-from .EatableEntity import EatableEntity
-from .Board import Board
-class Pacman():
+from .DynamicEntity import DynamicEntity
+
+class Pacman(DynamicEntity):
 
     def capture_eatable_entity(self,board,position):
         entity=board.get_entity(position)

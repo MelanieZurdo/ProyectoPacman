@@ -2,9 +2,11 @@ import unittest
 from Main.Model.Direction import Direction
 from Main.Model.Board import Board
 from Main.Model.Direction import Up
+from Main.Model.Ghost import Ghost
 from Main.Model.Position import Position
 from Main.Model.Pacman import Pacman
 from Main.Model.Square import Square
+from Main.Model.Ghost import Ghost
 
 
 
@@ -28,11 +30,17 @@ class TestBoard(unittest.TestCase):
     def test_insert_entity(self):
         board = Board(2, 2)
         pacman = Pacman()
+        ghost=Ghost("azul")
+        ghost_position=Position(0,0)
         pacman_position = Position(0, 0)
         board.place_entity(pacman_position, pacman)
-        self.assertEqual(pacman, board.get_entity(pacman_position))
+        board.place_entity(ghost_position,ghost)
+        self.assertEqual(pacman, board.get_entity(Position(0,0),0))
+        self.assertEqual(ghost, board.get_entity(Position(0,0),1))
 
-    def test_move_pacman_up(self):
+
+
+    '''def test_move_pacman_up(self):
         board=Board(5,5)
         pacman=Pacman()
         pacman_position=Position(2,0)
@@ -42,7 +50,7 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(pacman, board.get_entity(Position(1,0)))
         self.assertEqual(None,board.get_entity(pacman_position))
     
-''' def test_move_pacman_down(self):
+def test_move_pacman_down(self):
         board=Board(5,5)
         pacman=Pacman()
         pacman_position=Position(2,0)

@@ -1,11 +1,8 @@
-from abc import ABC,abstractmethod
+from abc import ABC
+from Main.Model.Entity import Entity
 
 
-class EatableEntity(ABC):
-    @abstractmethod
-    def __init__(self, score):
-        self.score = score
-    def list_eatable_entity(self):
-        list_eatable_entity=list()
-        list_eatable_entity.append(self)
-        return list_eatable_entity
+class EatableEntity(Entity,ABC):    
+
+    def is_eatable_by(self,entity):
+        return entity.can_eat_eatable_entity()

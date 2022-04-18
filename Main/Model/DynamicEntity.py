@@ -1,4 +1,5 @@
-from abc import ABC,abstractmethod
+from abc import ABC
+from Main.Model.Entity import Entity
 
-class DynamicEntity(ABC):
+class DynamicEntity(Entity,ABC):
    pass

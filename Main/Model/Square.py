@@ -1,28 +1,46 @@
 class Square:
     def __init__(self):
-        self.entity = None
-        self.create_square()
+        self.entities = set()
+
+    def get_entities(self):
+        return self.entities
     
-    def create_square(self):
-        self.square=list()        
+    def get_entity(self,entity):
+        if entity in self.entities:
+            return entity
 
-    def put(self, entity):  
-        self.entity=entity      
-        self.square.append(self.entity)
+    def put_entitie_in_square(self,static_entity):
+        self.entities.add(static_entity)
 
-    def delete(self):
-        self.entity = None
 
+    def put(self, new_entity):
+        if self.eaten_by_existing_entities(new_entity):
+            return False
+        self.eat_existing_entities(new_entity)
+        self.entities.add(new_entity)
+        return True
+
+    def eat_existing_entities(self, new_entity):
+        for entity in self.entities:
+            if entity.is_eatable_by(new_entity):
+                new_entity.eat(entity)
+                self.remove(entity)
+
+    def eaten_by_existing_entities(self, new_entity):
+        for entity in self.entities:
+            if new_entity.is_eatable_by(entity):
+                entity.eat(new_entity)
+                return True
+        return False
+
+    def remove(self, entity):
+        self.entities.remove(entity)
+    
     def is_empty(self):
-        return self.entity == None
-
-    def get_entity(self,index):        
-        for i in range(0,len(self.square)):
-            if i==index:
-                return self.square[i]
+        return len(self.entities)==0
 
     def __str__(self):
         if self.is_empty():
-            return "[ ]"
+            return "[]"
         else:
-            return ",".join(map(str, self.square)) 
+            return str(str(self.entities))

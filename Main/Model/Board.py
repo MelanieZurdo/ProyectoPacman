@@ -31,7 +31,7 @@ class Board():
         square = self.board[position.get_row()][position.get_column()]
         square.put(entity)
 
-    def put_entitie_in_board(self, position, static_entity):
+    def put_entity_in_board(self, position, static_entity):
         square = self.board[position.get_row()][position.get_column()]
         square.put_entitie_in_square(static_entity)
 

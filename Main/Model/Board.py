@@ -41,9 +41,13 @@ class Board():
                 if entity in self.board[i][j].get_entities():
                     return Position(i, j)
 
-    def get_entity(self, position):
+    def get_entities(self, position):
+        square = self.board[position.get_row()][position.get_column()]
+        return square.get_entities()
+    def get_entity(self,position):
         square = self.board[position.get_row()][position.get_column()]
         return square.get_entity()
+
 
     def clear_entity(self, position):
         square = self.board[position.get_row()][position.get_column()]

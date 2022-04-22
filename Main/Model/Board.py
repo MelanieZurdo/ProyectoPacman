@@ -20,6 +20,9 @@ class Board():
     def in_board(self, position):
         return position.get_row() in range(1, self.get_rows()-1) and position.get_column() in range(1, self.get_columns()-1)
 
+    def is_obstacle(self,existing_entity):
+        return existing_entity.is_obstacle()
+
     def create_board(self):
         self.board = list()
         for i in range(self.get_rows()):
@@ -31,10 +34,6 @@ class Board():
         square = self.board[position.get_row()][position.get_column()]
         square.put(entity)
 
-    def put_entity_in_board(self, position, static_entity):
-        square = self.board[position.get_row()][position.get_column()]
-        square.put_entitie_in_square(static_entity)
-
     def get_position(self, entity):
         for i in range(self.get_rows()):
             for j in range(self.get_columns()):
@@ -44,20 +43,24 @@ class Board():
     def get_entities(self, position):
         square = self.board[position.get_row()][position.get_column()]
         return square.get_entities()
-    def get_entity(self,position):
-        square = self.board[position.get_row()][position.get_column()]
-        return square.get_entity()
 
-
-    def clear_entity(self, position):
+    def clear_entity(self, position,entity):
         square = self.board[position.get_row()][position.get_column()]
-        return square.delete()
+        return square.delete_entity(entity)
 
     def move_entity(self, entity, direction):
         position_entity = self.get_position(entity)
         square = self.board[position_entity.get_row()][position_entity.get_column()]
+
         new_position = direction.new_position(position_entity)
+        new_square=self.board[new_position.get_row()][new_position.get_column()]
+        
+        for existing_entity in new_square.get_entities():
+            if self.is_obstacle(existing_entity):
+                return False  
+
         if self.in_board(new_position):
+            self.clear_entity(position_entity,entity)            
             self.place_entity(new_position, entity)
 
     def __str__(self):

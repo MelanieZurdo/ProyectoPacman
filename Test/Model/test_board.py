@@ -8,7 +8,7 @@ from Main.Model.Ghost import Ghost
 from Main.Model.Position import Position
 from Main.Model.Pacman import Pacman
 from Main.Model.Square import Square
-from Main.Model.Ghost import Ghost
+
 
 
 

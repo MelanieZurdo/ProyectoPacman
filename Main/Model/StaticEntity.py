@@ -2,4 +2,6 @@ from abc import ABC,abstractmethod
 
 
 class StaticEntity(ABC):
-    pass
+    @abstractmethod
+    def is_obstacle(self):
+        pass

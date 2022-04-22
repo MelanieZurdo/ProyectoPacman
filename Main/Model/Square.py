@@ -1,26 +1,21 @@
+from html import entities
+
+
 class Square:
     def __init__(self):
         self.entities = set()
-        self.entity_to_remove = None
 
     def get_entities(self):
-        return self.entities 
-        
-    def get_entity(self):
-        for entity in self.entities:
-            return entity 
-
-    def put_entitie_in_square(self, static_entity):
-        self.entities.add(static_entity)
+        return self.entities
 
     def put(self, new_entity):
         if self.eaten_by_existing_entities(new_entity):
-            return False
-        self.eat_existing_entities(new_entity)
-        self.remove_eatable_entity()
+            return False        
+        entities_to_remove=self.eat_existing_entities(new_entity)
+        entities_to_remove.clear()
+
         self.entities.add(new_entity)
         return True
-    
 
     def eaten_by_existing_entities(self, new_entity):
         for entity in self.entities:
@@ -29,16 +24,16 @@ class Square:
                 return True
         return False
 
-    def eat_existing_entities(self, new_entity):
+    def eat_existing_entities(self, new_entity): 
+        entities_to_remove=set()       
         for entity in self.entities:
-            if entity.is_eatable_by(new_entity):
-                self.entity_to_remove = entity
+            if entity.is_eatable_by(new_entity):                
                 new_entity.eat(entity)
+                entities_to_remove.add(entity)
+            return entities_to_remove
+        
 
-    def remove_eatable_entity(self):
-        self.remove(self.entity_to_remove)
-
-    def remove(self, entity):
+    def delete_entity(self, entity):
         self.entities.remove(entity)
 
     def is_empty(self):
@@ -48,4 +43,4 @@ class Square:
         if self.is_empty():
             return "[]"
         else:
-            return str(str(self.entities))
+            return str(self.entities)

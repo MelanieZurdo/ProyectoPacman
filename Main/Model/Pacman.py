@@ -10,6 +10,9 @@ class Pacman(DynamicEntity):
 
     def eat(self, entity):
         self.pacman_score+=entity.score
+        
+    def is_obstacle(self):
+        return False
 
     def __str__(self):
         return "[@]"

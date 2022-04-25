@@ -5,7 +5,7 @@ class Entity(ABC):
 
     
     def is_eatable_by(self,entity):
-        pass
+        return False
 
     
     def eat(self,entity):

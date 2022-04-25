@@ -10,10 +10,8 @@ class Square:
 
     def put(self, new_entity):
         if self.eaten_by_existing_entities(new_entity):
-            return False        
-        entities_to_remove=self.eat_existing_entities(new_entity)
-        entities_to_remove.clear()
-
+            return False     
+        self.eat_existing_entities(new_entity)
         self.entities.add(new_entity)
         return True
 
@@ -30,7 +28,9 @@ class Square:
             if entity.is_eatable_by(new_entity):                
                 new_entity.eat(entity)
                 entities_to_remove.add(entity)
-            return entities_to_remove
+        for entity in entities_to_remove:
+            if entity in self.entities:
+                self.entities.remove(entity)       
         
 
     def delete_entity(self, entity):
@@ -43,4 +43,4 @@ class Square:
         if self.is_empty():
             return "[]"
         else:
-            return str(self.entities)
+            return str([str(e) for e in self.entities])

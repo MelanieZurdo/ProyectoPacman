@@ -60,8 +60,11 @@ class Board():
                 return False  
 
         if self.in_board(new_position):
-            self.clear_entity(position_entity,entity)            
+            self.clear_entity(position_entity,entity)                   
             self.place_entity(new_position, entity)
+            
+    def is_empty(self,position):
+        return self.board[position.get_row()][position.get_column()].is_empty()
 
     def __str__(self):
         return '\n'+'\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.board])+'\n'

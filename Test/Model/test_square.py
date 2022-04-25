@@ -11,27 +11,27 @@ from Main.Model.Wall import Wall
 
 
 class TestBoard(unittest.TestCase):
-#    def test_put_pacman(self):
-#         board = Board(5, 5)
-#         pacman = Pacman()
-#         pacman_position = Position(1, 1)
-#         pacdot = PacDot()
-#         pacdot_position = Position(1, 2)
-#         board.place_entity(pacdot_position, pacdot)
-#         board.place_entity(pacman_position, pacman)        
-#         board.move_entity(pacman, Direction.right())
-#         self.assertIn(pacman, board.get_entities(pacdot_position))
+   def test_put_pacman(self):
+        board = Board(5, 5)
+        pacman = Pacman()
+        pacman_position = Position(1, 1)
+        pacdot = PacDot()
+        pacdot_position = Position(1, 2)
+        board.place_entity(pacdot_position, pacdot)
+        board.place_entity(pacman_position, pacman)        
+        board.move_entity(pacman, Direction.right())
+        self.assertIn(pacman, board.get_entities(pacdot_position))
     
-#    def test_wall_is_obstacle(self):
-#         board = Board(5, 5)
-#         pacman = Pacman()
-#         pacman_position = Position(1, 1)
-#         wall = Wall()
-#         wall_position = Position(1, 2)
-#         board.place_entity(wall_position, wall)
-#         board.place_entity(pacman_position, pacman)        
-#         board.move_entity(pacman, Direction.right())
-#         self.assertIn(pacman,board.get_entities(pacman_position))
+   def test_wall_is_obstacle(self):
+        board = Board(5, 5)
+        pacman = Pacman()
+        pacman_position = Position(1, 1)
+        wall = Wall()
+        wall_position = Position(1, 2)
+        board.place_entity(wall_position, wall)
+        board.place_entity(pacman_position, pacman)        
+        board.move_entity(pacman, Direction.right())
+        self.assertIn(pacman,board.get_entities(pacman_position))
     
    def test_two_entities_in_square(self): 
         board = Board(5, 5)

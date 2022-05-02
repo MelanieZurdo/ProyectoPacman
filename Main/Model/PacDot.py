@@ -12,4 +12,4 @@ class PacDot(EatableEntity):
         return False
         
     def __str__(self):
-        return "[·]"
+        return " · "

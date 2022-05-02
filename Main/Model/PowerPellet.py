@@ -12,4 +12,4 @@ class PowerPellet(EatableEntity):
         return False
     
     def __str__(self):
-        return "[#]"
+        return " # "

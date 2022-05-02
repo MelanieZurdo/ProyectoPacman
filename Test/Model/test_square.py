@@ -52,6 +52,26 @@ class TestBoard(unittest.TestCase):
         board.move_entity(pacman, Direction.right())
         self.assertIn(pacman, board.get_entities(pacdot_position))
         self.assertNotIn(pacdot,board.get_entities(pacdot_position))
+     
+   def test_is_obstacle(self):
+        board = Board(5, 5)
+        pacman = Pacman()
+        pacman_position = Position(1,1)
+
+        wall=Wall()
+        wall_position = Position(1,2)
+
+        board.place_entity(pacman_position, pacman)
+        board.place_entity(wall_position, wall)
+        board.move_entity(pacman, Direction.right())
+        self.assertNotIn(pacman,board.get_entities(wall_position))
+
+
+
+
+
+
+
         
 
 

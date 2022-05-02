@@ -2,8 +2,9 @@ from .DynamicEntity import DynamicEntity
 
 
 class Pacman(DynamicEntity):
-    def __init__(self):
+    def __init__(self,direction):
         self.pacman_score =0
+        self.direction=direction
 
     def can_eat_eatable_entity(self):
         return True
@@ -15,4 +16,4 @@ class Pacman(DynamicEntity):
         return False
 
     def __str__(self):
-        return "[@]"
+        return " @ "

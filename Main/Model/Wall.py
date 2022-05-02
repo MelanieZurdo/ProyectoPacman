@@ -7,4 +7,4 @@ class Wall(StaticEntity):
           return True  
 
       def __str__(self):
-        return "[-]"
+        return " | "

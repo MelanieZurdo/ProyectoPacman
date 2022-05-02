@@ -1,5 +1,15 @@
-from EatableEntity import EatableEntity
+from .EatableEntity import EatableEntity
 
 
 class PowerPellet(EatableEntity):
-    pass
+    def __init__(self):
+        self.score=200
+
+    def is_obstacle(self):
+        return False 
+    
+    def can_eat_eatable_entity(self):
+        return False
+    
+    def __str__(self):
+        return "[#]"

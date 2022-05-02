@@ -1,11 +1,18 @@
-from .EatableEntity import EatableEntity
-from .Board import Board
-class Pacman():
+from .DynamicEntity import DynamicEntity
 
-    def capture_eatable_entity(self,board,position):
-        entity=board.get_entity(position)
-        if entity in (entity.list_eatable_entity()):
-            board.clear_entity(position)
+
+class Pacman(DynamicEntity):
+    def __init__(self):
+        self.pacman_score =0
+
+    def can_eat_eatable_entity(self):
+        return True
+
+    def eat(self, entity):
+        self.pacman_score+=entity.score
+        
+    def is_obstacle(self):
+        return False
 
     def __str__(self):
         return "[@]"

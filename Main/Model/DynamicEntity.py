@@ -1,6 +1,9 @@
-from abc import ABC,abstractmethod
+from abc import ABC, abstractmethod
+from Main.Model.Entity import Entity
 
-class DynamicEntity(ABC):
-    @abstractmethod
-    def move(self):
-        pass
+class DynamicEntity(Entity,ABC):
+
+   @abstractmethod
+   def is_obstacle(self):
+      pass  
+

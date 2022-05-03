@@ -1,6 +1,4 @@
-import random
-
-from Main.Model.RandomStrategy import RandomStartegy
+from .RandomStrategy import RandomStrategy
 from .Ghost import Ghost
 from .PacDot import PacDot
 from .Wall import Wall
@@ -19,11 +17,9 @@ class LevelFactory:
         if self.level_one:
             return self.level_one
 
-        board = Board(10, 10)
-        movement_strategy_pacman=RandomStartegy()
-        pacman = Pacman(movement_strategy_pacman.get_direction())
-        movement_strategy_ghost=RandomStartegy()
-        ghosts = [Ghost("Blinky",movement_strategy_ghost.get_direction()), Ghost("Pinky",movement_strategy_ghost.get_direction()),Ghost("Inky",movement_strategy_ghost.get_direction()), Ghost("Clyde",movement_strategy_ghost.get_direction())]
+        board = Board(10, 10)               
+        pacman = Pacman(RandomStrategy())        
+        ghosts = [Ghost("Blinky",RandomStrategy()), Ghost("Pinky",RandomStrategy()),Ghost("Inky",RandomStrategy()), Ghost("Clyde",RandomStrategy())]
         self.add_walls(board)
         self.add_pacman(board, pacman)
         self.add_ghosts(board, ghosts)

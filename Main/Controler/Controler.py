@@ -1,6 +1,7 @@
 import time
 from Main.Model.Direction import Direction
 from Main.Model.LevelFactory import LevelFactory
+from Main.Model.RandomStrategy import RandomStrategy
 from Main.View.Console.BoardView import BoardView
 
 
@@ -14,9 +15,9 @@ class Controler:
         while True:
             time.sleep(1)
             for ghost in level_one.ghosts:
-                level_one.board.move_entity(ghost,ghost.direction)
+                level_one.board.move_entity(ghost) 
          
-            level_one.board.move_entity(level_one.pacman,level_one.pacman.direction) 
+            level_one.board.move_entity(level_one.pacman) 
             board_view.show()       
            
             

@@ -18,7 +18,7 @@ class Board():
         return self.columns
 
     def in_board(self, position):
-        return position.get_row() in range(1, self.get_rows()-1) and position.get_column() in range(1, self.get_columns()-1)
+        return position.get_row() in range(0, self.get_rows()-1) and position.get_column() in range(0, self.get_columns()-1)
 
     def is_obstacle(self,existing_entity):
         return existing_entity.is_obstacle()
@@ -48,11 +48,13 @@ class Board():
         square = self.board[position.get_row()][position.get_column()]
         return square.delete_entity(entity)
 
-    def move_entity(self, entity, direction):
+    def move_entity(self,entity):
         position_entity = self.get_position(entity)
         square = self.board[position_entity.get_row()][position_entity.get_column()]
 
-        new_position = direction.new_position(position_entity)
+        strategy = entity.get_strategy()
+        direction=strategy.get_direction()
+        new_position=direction.new_position(position_entity)
         new_square=self.board[new_position.get_row()][new_position.get_column()]
         
         for existing_entity in new_square.get_entities():

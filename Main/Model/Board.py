@@ -52,8 +52,8 @@ class Board():
         position_entity = self.get_position(entity)
         square = self.board[position_entity.get_row()][position_entity.get_column()]
 
-        strategy = entity.get_strategy()
-        direction=strategy.get_direction()
+       
+        direction=entity.get_direction()
         new_position=direction.new_position(position_entity)
         new_square=self.board[new_position.get_row()][new_position.get_column()]
         

@@ -1,4 +1,5 @@
 import curses
+import time
 
 
 class BoardView():
@@ -7,7 +8,7 @@ class BoardView():
         self.stdscr = curses.initscr()
     
     def show(self):
-        self.stdscr.addstr(0, 0, str(self.board))
+        self.stdscr.addstr(0, 0, str(self.board))        
         self.stdscr.refresh()
         
 

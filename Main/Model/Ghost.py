@@ -2,12 +2,15 @@ from .DynamicEntity import DynamicEntity
 
 
 class Ghost(DynamicEntity):
-    def __init__(self, color,movement_strategy ):
+    def __init__(self, color, movement_strategy):
         self.color = color
-        self.movement_strategy=movement_strategy 
+        self.movement_strategy = movement_strategy
+
+    def get_direction(self):
+        return self.get_strategy()
 
     def get_strategy(self):
-        return self.movement_strategy        
+        return self.movement_strategy.get_direction()
 
     def can_eat_eatable_entity(self):
         return False

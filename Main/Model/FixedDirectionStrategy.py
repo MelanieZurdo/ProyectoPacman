@@ -1,7 +1,7 @@
 from .Direction import Direction
 
 
-class ChoseDirection():
+class  FixedDirectionStrategy():
     def __init__(self,direction):
         self.direction=direction
         

@@ -8,5 +8,8 @@ class DynamicEntity(Entity,ABC):
 
    @abstractmethod
    def is_obstacle(self):
-      pass  
+      pass 
+   @abstractmethod
+   def get_direction(self):
+      pass 
 

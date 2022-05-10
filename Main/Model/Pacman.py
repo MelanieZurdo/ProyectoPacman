@@ -1,19 +1,14 @@
+from shutil import move
 from .DynamicEntity import DynamicEntity
 
 
 class Pacman(DynamicEntity):
-    def __init__(self, movement_strategy):
-        self.pacman_score = 0
-        self.movement_strategy = movement_strategy
-
-    def get_direction(self):
-        return self.get_strategy()
+    def __init__(self,movement_strategy):
+        DynamicEntity.__init__(self,movement_strategy)
+        self.pacman_score=0
 
     def can_eat_eatable_entity(self):
         return True
-
-    def get_strategy(self):
-        return self.movement_strategy.get_direction()
 
     def eat(self, entity):
         self.pacman_score += entity.score

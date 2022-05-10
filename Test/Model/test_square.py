@@ -12,46 +12,42 @@ from Main.Model.Wall import Wall
 
 
 class TestBoard(unittest.TestCase):
+
+    def setUp(self):
+        self.board = Board(10,10)
+        self.pacman = Pacman(FixedDirectionStrategy(Direction.right()))
+        self.pacman_position = Position(4, 4)
+        self.pacdot = PacDot()
+        self.pacdot_position = Position(4,5)
+        self.wall = Wall()
+        self.wall_position = Position(4,5)
+        self.power_pellet = PowerPellet()
+        self.power_pellet_position = Position(1,2)
+
     def test_put_pacman(self):
-        board = Board(5, 5)
-        pacman = Pacman(FixedDirectionStrategy(Direction.right()))
-        pacman_position = Position(1, 1)
-        pacdot = PacDot()
-        pacdot_position = Position(1, 2)
-        board.place_entity(pacdot_position, pacdot)
-        board.place_entity(pacman_position, pacman)
-        board.move_entity(pacman)
-        self.assertIn(pacman, board.get_entities(pacdot_position))
+        
+        self.board.place_entity(self.pacdot_position, self.pacdot)
+        self.board.place_entity(self.pacman_position, self.pacman)
+        self.board.move_entity(self.pacman)
+        self.assertIn(self.pacman, self.board.get_entities(self.pacdot_position))
 
     def test_wall_is_obstacle(self):
-        board = Board(5, 5)
-        pacman = Pacman(FixedDirectionStrategy(Direction.right()))
-        pacman_position = Position(1, 1)
-        wall = Wall()
-        wall_position = Position(1, 2)
-        board.place_entity(wall_position, wall)
-        board.place_entity(pacman_position, pacman)
-        board.move_entity(pacman)
-        self.assertIn(pacman, board.get_entities(pacman_position))
+                
+        self.board.place_entity(self.wall_position, self.wall)
+        self.board.place_entity(self.pacman_position, self.pacman)
+        self.board.move_entity(self.pacman)
+        self.assertIn(self.pacman, self.board.get_entities(self.pacman_position))
 
     def test_two_entities_in_square(self):
-        board = Board(5, 5)
+
         pacman = Pacman(FixedDirectionStrategy(Direction.right()))
-        pacman_position = Position(1, 1)
+        self.board.place_entity(self.pacdot_position, self.pacdot)
+        self.board.place_entity(self.power_pellet_position, self.power_pellet)
+        self.board.place_entity(self.pacman_position, pacman)
 
-        pacdot = PacDot()
-        pacdot_position = Position(1, 2)
-
-        power_pellet = PowerPellet()
-        power_pellet_position = Position(1, 2)
-
-        board.place_entity(pacdot_position, pacdot)
-        board.place_entity(power_pellet_position, power_pellet)
-        board.place_entity(pacman_position, pacman)
-
-        board.move_entity(pacman)
-        self.assertIn(pacman, board.get_entities(pacdot_position))
-        self.assertNotIn(pacdot, board.get_entities(pacdot_position))
+        self.board.move_entity(pacman)
+        self.assertIn(pacman,self.board.get_entities(self.pacdot_position))
+        self.assertNotIn(self.pacdot, self.board.get_entities(self.pacdot_position))
 
 
 if __name__ == '__main__':

@@ -14,3 +14,4 @@ class Entity(ABC):
    
     def can_eat_eatable_entity():
         return False
+    

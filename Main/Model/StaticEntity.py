@@ -7,3 +7,5 @@ class StaticEntity(Entity,ABC):
     @abstractmethod
     def is_obstacle(self):
         pass
+
+    

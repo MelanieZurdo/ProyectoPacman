@@ -12,4 +12,9 @@ class DynamicEntity(Entity,ABC):
    
    def get_direction(self):
       return self.movement_strategy.get_direction()
+   
+   def priority(self):
+      return False
 
+   def is_dynamic(self):
+        return True

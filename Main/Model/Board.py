@@ -1,11 +1,12 @@
-from .PacDot import PacDot
+from Main.Model.Visitable import Visitable
+from .Printable import Printable
 from .Square import Square
 from .Position import Position
 from .Wall import Wall
-from .Direction import Direction
 
 
-class Board():
+
+class Board(Printable,Visitable):
     def __init__(self, rows, columns):
         self.rows = rows
         self.columns = columns
@@ -48,13 +49,11 @@ class Board():
         square = self.board[position.get_row()][position.get_column()]
         return square.delete_entity(entity)
 
-    def move_entity(self,entity):
-        position_entity = self.get_position(entity)
-        square = self.board[position_entity.get_row()][position_entity.get_column()]
-
-       
+    def move_entity(self,entity):        
+        position_entity = self.get_position(entity)       
         direction=entity.get_direction()
         new_position=direction.new_position(position_entity)
+        
         new_square=self.board[new_position.get_row()][new_position.get_column()]
         
         for existing_entity in new_square.get_entities():
@@ -67,6 +66,9 @@ class Board():
             
     def is_empty(self,position):
         return self.board[position.get_row()][position.get_column()].is_empty()
+    
+    def visit(self,visitor):
+        visitor.visitBoard(self)
 
     def __str__(self):
         return '\n'+'\n'.join(['\t'.join([str(cell) for cell in row]) for row in self.board])+'\n'

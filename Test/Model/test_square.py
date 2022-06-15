@@ -11,7 +11,7 @@ from Main.Model.PacDot import PacDot
 from Main.Model.Wall import Wall
 
 
-class TestBoard(unittest.TestCase):
+class TestSquare(unittest.TestCase):
 
     def setUp(self):
         self.board = Board(10,10)

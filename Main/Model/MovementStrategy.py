@@ -5,4 +5,7 @@ class MovementStrategy(ABC):
     def get_direction(self):
         pass
 
+    def update(self):
+        pass
+
 

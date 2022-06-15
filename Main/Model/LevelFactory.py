@@ -1,3 +1,4 @@
+from Main.Model.HumanStrategy import HumanStrategy
 from .RandomStrategy import RandomStrategy
 from .Ghost import Ghost
 from .PacDot import PacDot
@@ -10,23 +11,28 @@ from .PowerPellet import PowerPellet
 
 
 class LevelFactory:
-    def __init__(self):
+    def __init__(self,view):
         self.level_one = None
+        self.view=view
 
     def get_level_one(self):
         if self.level_one:
             return self.level_one
 
-        board = Board(10, 10)               
-        pacman = Pacman(RandomStrategy())        
-        ghosts = [Ghost("Blinky",RandomStrategy()), Ghost("Pinky",RandomStrategy()),Ghost("Inky",RandomStrategy()), Ghost("Clyde",RandomStrategy())]
+        board = Board(10, 10)           
+
+        pacman = Pacman(HumanStrategy())             
+           
+        ghosts = [Ghost(RandomStrategy(),"Blinky"), Ghost(RandomStrategy(),"Pinky"),Ghost(RandomStrategy(),"este"), Ghost(RandomStrategy(),"Clyde")]
         self.add_walls(board)
         self.add_pacman(board, pacman)
         self.add_ghosts(board, ghosts)
         self.add_power_pellets(board)
         self.fill_empty_with_pacdot(board)
 
-        self.level_one = Level(board, pacman, ghosts)
+        board.visit(self.view)
+
+        self.level_one = Level(board,pacman,ghosts)
         return self.level_one
 
     def add_walls(self, board):

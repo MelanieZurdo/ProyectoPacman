@@ -16,5 +16,5 @@ class DynamicEntity(Entity, ABC):
     def is_dynamic(self):
         return True
 
-    def eat(self):
-        pass
+    def eat(self, entity):
+        entity.die()

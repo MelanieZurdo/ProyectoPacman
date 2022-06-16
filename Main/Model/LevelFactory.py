@@ -30,7 +30,7 @@ class LevelFactory:
         self.add_power_pellets(board)
         self.fill_empty_with_pacdot(board)
 
-        board.visit(self.view)
+        board.accept(self.view)
 
         self.level_one = Level(board,pacman,ghosts)
         return self.level_one

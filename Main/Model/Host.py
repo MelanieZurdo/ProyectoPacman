@@ -1,4 +1,4 @@
 class Host:
 
-    def visit(self, visitor):
+    def accept(self, visitor):
         pass

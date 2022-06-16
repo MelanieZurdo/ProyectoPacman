@@ -14,16 +14,13 @@ class Pacman(DynamicEntity):
     def can_eat_eatable_entity(self):
         return True
 
-    def eat(self, entity):
-        entity.die()
-
     def is_obstacle(self):
         return False
 
     def is_eatable_by(self, entity):
         return entity.can_eat_pacman()
 
-    def visit(self, visitor):
+    def accept(self, visitor):
         visitor.visitPacman(self)
 
     def __str__(self):

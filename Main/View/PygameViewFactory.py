@@ -24,7 +24,7 @@ class PygameViewFactory(Visitor):
             for j in range(board.get_columns()): 
                 entities=board.get_entities(Position(i,j))
                 for entity in entities:
-                    entity.visit(self)   
+                    entity.accept(self)   
    
 
     def visitPacman(self,pacman):

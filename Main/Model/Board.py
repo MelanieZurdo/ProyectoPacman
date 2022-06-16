@@ -21,12 +21,12 @@ class Board(Printable, Host):
         return position.get_row() in range(0, self.get_rows()-1) and position.get_column() in range(0, self.get_columns()-1)
 
     def valid_position(self, new_position):
-        new_square = self.board[new_position.get_row()
-                                ][new_position.get_column()]
-        for existing_entity in new_square.get_entities():
-            if self.is_obstacle(existing_entity):
-                return False
-        return True
+        if self.in_board(new_position):
+            new_square = self.board[new_position.get_row()][new_position.get_column()]
+            for existing_entity in new_square.get_entities():
+                if self.is_obstacle(existing_entity):
+                    return False
+            return True
 
     def is_obstacle(self, existing_entity):
         return existing_entity.is_obstacle()
@@ -61,15 +61,14 @@ class Board(Printable, Host):
         direction = entity.get_direction()
         new_position = direction.new_position(entity_position)
 
-        if self.valid_position(new_position):
-            if self.in_board(new_position):
-                self.clear_entity(entity_position, entity)
-                self.place_entity(new_position, entity)
+        if self.valid_position(new_position):            
+            self.clear_entity(entity_position, entity)
+            self.place_entity(new_position, entity)
 
     def is_empty(self, position):
         return self.board[position.get_row()][position.get_column()].is_empty()
 
-    def visit(self, visitor):
+    def accept(self, visitor):
         visitor.visitBoard(self)
 
     def __str__(self):

@@ -9,7 +9,7 @@ class HumanStrategy(MovementStrategy):
 
     def update(self, direction):
         self.direction = direction
-        return self.direction
+        
 
     def get_direction(self):
         return self.direction

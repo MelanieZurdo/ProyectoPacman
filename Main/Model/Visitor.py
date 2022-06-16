@@ -2,20 +2,20 @@ from abc import ABC
 
 
 class Visitor(ABC):
-    def visitBoard(self,board):
-       pass    
-   
-    def visitPacman(self,pacman):
+    def visitBoard(self, board):
         pass
-    
-    def visitGhost(self,ghost):
+
+    def visitPacman(self, pacman):
         pass
-    
-    def visitPacDot(self,pacdot):
+
+    def visitGhost(self, ghost):
         pass
-    
-    def visitPowerPellet(self,powerpellet):
+
+    def visitPacDot(self, pacdot):
         pass
-    
-    def visitWall(self,wall):
+
+    def visitPowerPellet(self, powerpellet):
+        pass
+
+    def visitWall(self, wall):
         pass

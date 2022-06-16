@@ -15,5 +15,8 @@ class PowerPellet(EatableEntity):
     def visit(self,visitor):
         visitor.visitPowerPellet(self)
     
+    def die(self):
+        pass
+    
     def __str__(self):
         return " # "

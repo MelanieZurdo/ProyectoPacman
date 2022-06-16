@@ -14,6 +14,9 @@ class PacDot(EatableEntity):
     
     def visit(self,visitor):
         visitor.visitPacDot(self)
+    
+    def die(self):
+        pass
         
     def __str__(self):
         return " · "

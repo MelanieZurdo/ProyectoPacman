@@ -1,6 +1,0 @@
-Desarrollo de Proyecto "Pacman" en lenguaje de programacion Python,
-con implementacion de patrón de arquitectura de software MVC.
-Resolucion de problemas mediante los patrones de diseño:Singleton,Factory,Visitor,Strategy....(aca dejo para agregar)
-Desarrollo de tests unitarios basados en el marco de prueba Unittest modulo perteneciente al lenguaje Python. 
-Vista realizada con modulo Pygame.
-Sistema de control de versiones utilizado:GitHub

@@ -13,7 +13,8 @@ class Controler:
     def main(self):
         level_factory = LevelFactory(PygameViewFactory())
         level_one = level_factory.get_level_one()
-
+        level_one.board.get_view().draw()
+        time.sleep(2)
         while level_one.pacman.alive:
             time.sleep(0.5)
             user = User()

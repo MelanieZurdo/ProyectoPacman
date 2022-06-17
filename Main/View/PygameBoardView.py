@@ -15,10 +15,8 @@ class PygameBoardView(PygameView):
 
     def inicialize_parameters(self):
         if not self.block_height:
-            self.block_height = round(
-                SCREEN_HEIGHT/self.get_printable().get_rows())
-            self.block_width = round(
-                SCREEN_WIDTH/self.get_printable().get_columns())
+            self.block_height = round(SCREEN_HEIGHT/self.get_printable().get_rows())
+            self.block_width = round(SCREEN_WIDTH/self.get_printable().get_columns())
 
     def draw(self):
         self.inicialize_parameters()
@@ -42,9 +40,7 @@ class PygameBoardView(PygameView):
 
     def draw_grid(self):
         for i in range(self.get_printable().get_rows()):
-            new_height = round(i * self.block_height)
-            new_width = round(i * self.block_width)
-            pygame.draw.line(self.surface, WHITE, (0, new_height),
-                             (SCREEN_WIDTH, new_height), 2)
-            pygame.draw.line(self.surface, WHITE, (new_width, 0),
-                             (new_width, SCREEN_HEIGHT), 2)
+            new_height = round((i * self.block_height))
+            new_width = round((i * self.block_width))
+            pygame.draw.line(self.surface, WHITE, (0, new_height),(SCREEN_WIDTH, new_height), 2)
+            pygame.draw.line(self.surface, WHITE, (new_width, 0),(new_width, SCREEN_HEIGHT), 2)

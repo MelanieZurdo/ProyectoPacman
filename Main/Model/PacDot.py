@@ -1,15 +1,19 @@
+from Main.Model.StaticEntity import StaticEntity
 from .EatableEntity import EatableEntity
 
 
 class PacDot(EatableEntity):
     def __init__(self):
-        self.score=100
+        self.score = 100
 
     def is_obstacle(self):
-        return False 
+        return False
 
     def can_eat_eatable_entity(self):
         return False
-        
+
+    def accept(self, visitor):
+        visitor.visitPacDot(self)
+
     def __str__(self):
-        return "[·]"
+        return " · "

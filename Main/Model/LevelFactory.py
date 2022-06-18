@@ -1,3 +1,5 @@
+from Main.Model.HumanStrategy import HumanStrategy
+from .RandomStrategy import RandomStrategy
 from .Ghost import Ghost
 from .PacDot import PacDot
 from .Wall import Wall
@@ -9,48 +11,59 @@ from .PowerPellet import PowerPellet
 
 
 class LevelFactory:
-    def __init__(self):
-       self.level_one=None
+    def __init__(self,view):
+        self.level_one = None
+        self.view=view
 
     def get_level_one(self):
         if self.level_one:
             return self.level_one
-   
 
-        board=Board(5,5) 
-        pacman=Pacman()
-        board.place_entity(Position(1,1),pacman)               
-        ghosts=[Ghost("blue"),Ghost("red"),Ghost("pink")]
-        board.place_entity(Position(1,2),ghosts[0])        
-        board.place_entity(Position(1,3),ghosts[1])        
-        board.place_entity(Position(3,3),ghosts[2])        
-        board.place_entity(Position(3,3),PowerPellet())
-        board.place_entity(Position(2,3),PowerPellet())
-        board.place_entity(Position(3,1),PowerPellet())
+        board = Board(10, 10)           
 
-        for i in range(1,4):
-            board.place_entity(Position(0,i),Wall())
-            board.place_entity(Position(i,0),Wall())
-            board.place_entity(Position(4,i),Wall())
-            board.place_entity(Position(i,4),Wall())
-        board.place_entity(Position(0,0),Wall())
-        board.place_entity(Position(0,4),Wall())
-        board.place_entity(Position(4,0),Wall())
-        board.place_entity(Position(4,4),Wall())
-
+        pacman = Pacman(HumanStrategy())             
+           
+        ghosts = [Ghost(RandomStrategy(),"Blinky"), Ghost(RandomStrategy(),"Pinky"),Ghost(RandomStrategy(),"este"), Ghost(RandomStrategy(),"Clyde")]
+        self.add_walls(board)
+        self.add_pacman(board, pacman)
+        self.add_ghosts(board, ghosts)
+        self.add_power_pellets(board)
         self.fill_empty_with_pacdot(board)
-        self.level_one=Level(board,pacman,ghosts)
+
+        board.accept(self.view)
+
+        self.level_one = Level(board,pacman,ghosts)
         return self.level_one
-        
-    def fill_empty_with_pacdot(self,board):
-        for i in range(5):
-            for j in range(5):
-                position=Position(i,j)
+
+    def add_walls(self, board):
+        rows = board.get_rows()
+        for i in range(1, rows-1):
+            board.place_entity(Position(0, i), Wall())
+            board.place_entity(Position(rows-1, i), Wall())
+        columns = board.get_columns()
+        for i in range(columns):
+            board.place_entity(Position(i, 0), Wall())
+            board.place_entity(Position(i, columns-1), Wall())
+
+    def add_pacman(self, board, pacman):
+        board.place_entity(Position(6, 4), pacman)
+
+    def add_ghosts(self, board, ghosts):
+        row = (((board.get_rows())//2)-1)
+        column = (((board.get_columns())//2)-1)
+        box_ghosts = [Position(row, column), Position(row, column+1), Position(row+1, column), Position(row+1, column+1)]
+        for position, ghost in zip(box_ghosts, ghosts):
+            board.place_entity(position, ghost)
+
+    def add_power_pellets(self, board):
+        power_pellets = [PowerPellet(), PowerPellet(), PowerPellet()]
+        board.place_entity(Position(1, 1), power_pellets[0])
+        board.place_entity(Position(8, 7), power_pellets[0])
+        board.place_entity(Position(1, 6), power_pellets[0])
+
+    def fill_empty_with_pacdot(self, board):
+        for i in range(board.get_rows()):
+            for j in range(board.get_columns()):
+                position = Position(i, j)
                 if board.is_empty(position):
-                    board.place_entity(Position(i,j),PacDot())
-            
-
-
-        
-
-
+                    board.place_entity(Position(i, j), PacDot())

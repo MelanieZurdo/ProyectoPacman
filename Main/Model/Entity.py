@@ -5,14 +5,20 @@ from .Printable import Printable
 
 class Entity(ABC, Printable, Host):
 
+    @abstractmethod
+    def is_obstacle(self):
+        pass
+
+    @abstractmethod
     def is_eatable_by(self, entity):
-        return False
+        pass
+
+    @abstractmethod
+    def can_eat_ghost(self):
+        pass
 
     def eat(self, entity):
         pass
-
-    def can_eat_eatable_entity(self):
-        return False
 
     def can_eat_pacman(self):
         return False

@@ -49,6 +49,6 @@ class TestSquare(unittest.TestCase):
         self.assertIn(pacman,self.board.get_entities(self.pacdot_position))
         self.assertNotIn(self.pacdot, self.board.get_entities(self.pacdot_position))
 
-
+    
 if __name__ == '__main__':
     unittest.main()

@@ -18,11 +18,10 @@ class TestBoard(unittest.TestCase):
         self.pacdot = PacDot()
         self.pacdot_position = Position(4,3)        
         self.ghost_position = Position(3,4)
-
-
+ 
     def test_insert_entity(self):        
         pacman = Pacman(FixedDirectionStrategy(Direction.up()))
-        ghost=Ghost(FixedDirectionStrategy(Direction.up()),"RED")        
+        ghost=Ghost(FixedDirectionStrategy(Direction.up()))        
         self.board.place_entity(self.pacman_position, pacman)
         self.board.place_entity(self.ghost_position,ghost)
 
@@ -86,7 +85,7 @@ class TestBoard(unittest.TestCase):
         self.assertNotIn(pacman, self.board.get_entities(self.pacman_position))
 
     def test_move_ghost_up(self):
-        ghost=Ghost(FixedDirectionStrategy(Direction.up()),"RED") 
+        ghost=Ghost(FixedDirectionStrategy(Direction.up())) 
         board_view = BoardView(self.board)
         board_view.show()
         time.sleep(1)
@@ -97,11 +96,11 @@ class TestBoard(unittest.TestCase):
         board_view.show()
         time.sleep(1)
         self.assertIn(ghost, self.board.get_entities(Position(2,4)))
-        self.assertNotIn(ghost,self.board.get_entities(self.ghost_position))
+        self.assertNotIn(ghost,self.board.get_entities(self.ghost_position)) 
 
     def test_ghost_eat_pacman(self):
         pacman = Pacman(FixedDirectionStrategy(Direction.up()))
-        ghost=Ghost(FixedDirectionStrategy(Direction.down()),"RED") 
+        ghost=Ghost(FixedDirectionStrategy(Direction.down())) 
         board_view = BoardView(self.board)
         board_view.show()
         time.sleep(1)
@@ -111,11 +110,9 @@ class TestBoard(unittest.TestCase):
         time.sleep(1)
         self.board.move_entity(pacman)
         board_view.show()
-        time.sleep(1)    
-       
-
-        self.assertNotIn(pacman, self.board.get_entities(self.pacman_position))
-
+        time.sleep(1) 
+        self.assertIsNone(self.board.get_position(pacman))
+        
 
     def test_capture_eatable_entity(self):        
         pacman = Pacman(FixedDirectionStrategy(Direction.left()))        

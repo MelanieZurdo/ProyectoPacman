@@ -1,8 +1,7 @@
 from Main.Model.StaticEntity import StaticEntity
-from .EatableEntity import EatableEntity
 
 
-class PacDot(EatableEntity):
+class PacDot(StaticEntity):
     def __init__(self):
         self.score = 100
 

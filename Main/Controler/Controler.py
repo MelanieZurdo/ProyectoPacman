@@ -14,8 +14,7 @@ class Controler:
     def main(self):
         level_factory = LevelFactory(PygameViewFactory())
         level_one = level_factory.get_level_one()
-        user = User()
-        # New change
+        user = User()      
         game = Game(level_one)
         level_one.board.get_view().draw()
         time.sleep(0.2)

@@ -6,6 +6,10 @@ from .Printable import Printable
 class Entity(ABC, Printable, Host):
 
     @abstractmethod
+    def is_obstacle(self):
+        pass
+
+    @abstractmethod
     def is_eatable_by(self, entity):
         pass
 

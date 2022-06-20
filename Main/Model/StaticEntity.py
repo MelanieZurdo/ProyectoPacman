@@ -3,10 +3,7 @@ from abc import ABC, abstractmethod
 from Main.Model.Entity import Entity
 
 
-class StaticEntity(Entity, ABC):
-    @abstractmethod
-    def is_obstacle(self):
-        pass
+class StaticEntity(Entity, ABC):   
 
     def can_eat_ghost(self):
         return False

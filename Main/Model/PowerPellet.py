@@ -1,8 +1,9 @@
 from Main.Model.StaticEntity import StaticEntity
-from .EatableEntity import EatableEntity
+
+from ..Controler.Game import Game
 
 
-class PowerPellet(EatableEntity):
+class PowerPellet(StaticEntity):
     def __init__(self):
         self.score = 200
 
@@ -17,3 +18,7 @@ class PowerPellet(EatableEntity):
 
     def __str__(self):
         return " # "
+    
+    #New change
+    def die(self):
+        Game().power_pellet_eaten()

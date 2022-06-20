@@ -8,6 +8,8 @@ from .Level import Level
 from .Pacman import Pacman
 from .Position import Position
 from .PowerPellet import PowerPellet
+from .Unafraid import Unafraid
+from .Afraid import Afraid
 
 
 class LevelFactory:
@@ -23,7 +25,7 @@ class LevelFactory:
 
         pacman = Pacman(HumanStrategy())             
            
-        ghosts = [Ghost(RandomStrategy(),"Blinky"), Ghost(RandomStrategy(),"Pinky"),Ghost(RandomStrategy(),"este"), Ghost(RandomStrategy(),"Clyde")]
+        ghosts = [Ghost(RandomStrategy()), Ghost(RandomStrategy()),Ghost(RandomStrategy()), Ghost(RandomStrategy())]
         self.add_walls(board)
         self.add_pacman(board, pacman)
         self.add_ghosts(board, ghosts)

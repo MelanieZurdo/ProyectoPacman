@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Noticia</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" class="modal-content">
+  <ion-card>
+    <img [src]="article.image">
+    <p><strong>{{ article.title }}</strong></p>
+    <div>
+      <p>{{ article.description }}</p>
+      <p>{{ article.content }}</p>
+    </div>
+  </ion-card>
+
+  <!--Investigar como redireccionar a la url
+  <ion-nav-link routerDirection="{{article.url}}" component="nav-profile"></ion-nav-link>-->
+</ion-content>

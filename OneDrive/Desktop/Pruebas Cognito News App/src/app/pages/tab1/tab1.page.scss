@@ -1,0 +1,30 @@
+.segment-container {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 10px;
+}
+ion-segment {
+    display: flex;
+    justify-content: space-around;
+    overflow: auto;
+    white-space: nowrap;
+}
+  
+ion-segment-button {
+  flex: 1 1 auto;
+  text-align: center;
+  min-width: 90px;
+  padding: 2px 2px;
+  margin: 0 5px;
+  font-size: 10px;
+}
+
+ion-segment-button:first-child {
+  margin-left: 0;
+}
+  
+ion-segment-button:last-child {
+  margin-right: 0;
+}
+  

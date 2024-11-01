@@ -1,0 +1,21 @@
+<app-header title="Buscador de Noticias"></app-header>
+
+<ion-content [fullscreen]="true" color="light">
+  <div class="segment-container">
+  <ion-segment (ionChange)="onCategoryChange($event.detail.value)">
+    <ion-segment-button *ngFor="let category of categories" [value]="category">
+      <strong>{{ category }}</strong>
+    </ion-segment-button>
+  </ion-segment>
+</div>
+  <ion-list>
+    <ion-item *ngFor="let article of newsArticles" (click)="openArticle(article)">
+      <ion-card>
+        <ion-label>
+          <h1><strong>{{ article.title }}</strong></h1>
+          <p>{{ article.description }}</p>
+        </ion-label>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

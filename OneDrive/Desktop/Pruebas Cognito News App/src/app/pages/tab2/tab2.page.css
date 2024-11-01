@@ -1,0 +1,24 @@
+@charset "UTF-8";
+.no-scroll {
+  overflow: hidden;
+}
+
+.centered-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.shield-icon {
+  font-size: 80px;
+  margin-top: 40px;
+}
+
+ion-title {
+  margin-bottom: 16px; /* Espacio entre el título y el ícono */
+}/*# sourceMappingURL=tab2.page.css.map */

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.image-photo {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+}
+
+.image-icon {
+  width: 150px;
+  height: 150px;
+  font-size: 100px;
+  opacity: 30%;
+}
+
+.photo-btn {
+  position: static;
+  bottom: 25px;
+}
+
+.sign-out-button {
+  margin-top: auto; /* Empuja el botón de cerrar sesión hacia abajo */
+}/*# sourceMappingURL=tab3.page.css.map */

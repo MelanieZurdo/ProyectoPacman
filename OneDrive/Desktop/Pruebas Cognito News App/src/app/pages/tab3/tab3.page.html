@@ -1,0 +1,22 @@
+<app-header title="Perfil"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-top ion-text-center">
+
+  <div *ngIf="user">
+    <img class="image-photo" *ngIf="profilePicture" [src]="profilePicture"
+      alt="Profile Picture"/>
+    <ion-icon class="image-icon" *ngIf="!profilePicture"
+      name="person-circle-outline"></ion-icon>
+    <br>
+    <ion-button class="photo-btn" (click)="takeImage()">Tomar Foto</ion-button>
+    <p>Nombre: {{ user.name }}</p>
+    <p>Email: {{ user.email }}</p>
+  </div>
+
+    <ion-menu-toggle auto-hide="false">
+      <ion-button expand="large" (click)="signOut()" class="sign-out-button" color="light">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-button>
+    </ion-menu-toggle>
+</ion-content>
